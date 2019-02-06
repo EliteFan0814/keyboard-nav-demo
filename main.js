@@ -39,7 +39,7 @@ while (index < keys.length) {
         div1.appendChild(kbd1)
         kbd1.textContent = row[index2]
         kbd1.className = 'key'
-        kbd1.id = '123'
+        kbd1.id = row[index2] + 'p'
         button1 = document.createElement('button')
         kbd1.appendChild(button1)
         button1.textContent = 'edit'
@@ -77,14 +77,14 @@ document.onkeypress = function (press1) {
     document.getElementById('p1').innerHTML = website
     }
 
-document.onkeydown = function () {
-    var elements = document.getElementById("123");
-    elements.classList.add('pressed')
+document.onkeydown = function (pp) {
+    presedKey = pp.key
+    console.log(presedKey)
+   document.getElementsByClassName('key').classList.add('pressed')
 }
 
-document.onkeyup = function () {
-    var elements = document.getElementById("123");
-    elements.classList.remove('pressed')
+document.onkeyup = function (ee) {
+    presedKey1 = ee.key
+    console.log(presedKey1)
+   document.getElementsByClassName('key').classList.remove('pressed')
 }
-
-
