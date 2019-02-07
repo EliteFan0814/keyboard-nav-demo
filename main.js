@@ -126,5 +126,17 @@ document.onkeypress = function (press) {
     window.open('https://'+ website, '_blank')
 }
 
+document.onkeydown = function (press) {
+    presedKey = press.key;
+    console.log(presedKey);
+    document.getElementById(presedKey + '-key').classList.add('pressed');
+}
+
+document.onkeyup = function (press) {
+    // var presedKey = press.key;
+    console.log("up: "+presedKey)
+    document.getElementById(presedKey + '-key').classList.remove('pressed');
+}
+
 
 
