@@ -123,18 +123,7 @@ document.onkeypress = function (press) {
     var key = press.key
     var website = hash[key]
     document.getElementById('p1').innerHTML = website
-}
-
-document.onkeydown = function (press) {
-    presedKey = press.key;
-    console.log(presedKey);
-    document.getElementById(presedKey + '-key').classList.add('pressed');
-}
-
-document.onkeyup = function (press) {
-    // var presedKey = press.key;
-    console.log("up: "+presedKey)
-    document.getElementById(presedKey + '-key').classList.remove('pressed');
+    window.open('https://'+ website, '_blank')
 }
 
 
