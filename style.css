@@ -7,30 +7,10 @@ body{
     background: #c7dbe5;
 }
 
-a{
-    text-decoration: none;
+
+main{
+    text-align: center;
 }
-
-kbd{
-    border: 1px solid black;
-    display: inline-block;
-    width: 5em;
-    height: 5em;
-    text-transform: uppercase;
-    position: relative;
-    background: #edeae9;
-}
-
-button{
-   
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    border: 0;
-    background:rgba(255,255,255,0.1);
-}
-
-
 
 .keyboard-shell{
     display: inline-block;
@@ -40,9 +20,6 @@ button{
     box-shadow: 0 0 10px rgba(0,0,0,0.2), inset 0 0 3px rgba(0,0,0,0.3)
 }
 
-main{
-    text-align: center;
-}
 
 .wipper{
  
@@ -50,6 +27,46 @@ main{
     padding: 2px;
     border-radius: 5px;
 }
+
+.key{
+    border: 1px solid black;
+    display: inline-block;
+    width: 5em;
+    height: 5em;
+    text-transform: uppercase;
+    position: relative;
+    background: #edeae9
+}
+
+.key .text{
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    position: relative;
+}
+
+.key img{
+    position: absolute;
+    left: 4px;
+    bottom:4px;
+}
+
+
+
+button{
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    border: 0;
+    background:rgba(255,255,255,0.1);
+    display: none;
+    font-size:8px;
+}
+
+kbd:hover > button{
+    display: inline-block; 
+}
+
 
 div{
     position: relative;
@@ -67,6 +84,12 @@ div{
     border-left-color: #d7d4cf;
     border-right-color: #dad7d2;
     text-align: left;
+}
+
+.key > img{
+    width: 16px;
+    height:16px;
+
 }
 
 .pressed{
@@ -92,12 +115,8 @@ div{
 
 }
 
-.control{
-    width: 87px;
-}
-
-.return{
-    width:103px;
+.return, .control{
+    width:95px;
 }
 
 .shl{
