@@ -13,8 +13,8 @@ var hash = {
     y: 'yahoo.com.hk',
     u: 'unwire.hk',
     p: 'paypal.com',
-    a: 'apple.com/hk',
-    g: 'www.google.com/',
+    a: 'apple.com',
+    g: 'www.google.com',
     h: 'hk01.com',
     j: 'javascript.ruanyifeng.com',
     x: 'xiedaimala.com',
@@ -93,3 +93,14 @@ document.onkeypress = function (press1) {
     var website = hash[key]
     document.getElementById('p1').innerHTML = website
 }
+
+document.onkeydown = function (pp) {
+    presedKey = pp.key
+    console.log(presedKey)
+    document.getElementsByClassName('key').classList.add('pressed')
+}
+
+document.onkeyup = function (ee) {
+    presedKey1 = ee.key
+    console.log(presedKey1)
+    document.getElementsByClassName('key').classList.remove('pressed')
