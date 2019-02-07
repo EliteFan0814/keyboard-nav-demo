@@ -104,3 +104,4 @@ document.onkeyup = function (ee) {
     presedKey1 = ee.key
     console.log(presedKey1)
     document.getElementsByClassName('key').classList.remove('pressed')
+}
