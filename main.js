@@ -8,30 +8,18 @@ var keys = {
 }
 
 var hash = {
-    q: 'qq.com',
     w: 'wix.com',
     e: 'evernote.com',
-    r: 'mondgu',
-    t: 'techbridd',
     y: 'yahoo.com.hk',
-    u: 'uniqlo.com',
-    i: 'ikea.com',
-    o: 'office.com',
+    u: 'unwire.hk',
     p: 'paypal.com',
-    a: 's',
-    s: 'sd',
-    d: 'dc',
-    f: 'dvd',
+    a: 'apple.com/hk',
     g: 'www.google.com/',
     h: 'hk01.com',
-    j: 'paal.com',
-    k: 'payal.com',
-    l: 'ppal.com',
-    z: 'pl.com',
-    x: 'pypal.com',
-    c: 'abc.com',
-    v: 'bbc.com',
-    b: 'cnn.com',
+    j: 'javascript.ruanyifeng.com',
+    x: 'xiedaimala.com',
+    c: 'chinese.engadget.com',
+    b: 'bbc.com',
     n: 'dcfever.com',
     m: 'medium.com',
 }
@@ -105,4 +93,3 @@ document.onkeypress = function (press1) {
     var website = hash[key]
     document.getElementById('p1').innerHTML = website
 }
-
