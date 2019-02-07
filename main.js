@@ -1,4 +1,6 @@
 
+//1 初始化數據
+
 var keys = {
     0: ['Esc', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '+', '~'],
     1: ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', 'Delete'],
@@ -24,57 +26,86 @@ var hash = {
     m: 'medium.com',
 }
 
+
+
+function getFromLocalStorage(name) {
+    return JSON.parse(localStorage.getItem('name') || 'null')
+}
+
+function tag(tagName) {
+    return document.createElement(tagName)
+}
+
+function createSpan(textContent) {
+    var span1 = tag('span')
+    span1.textContent = textContent
+    span1.className = 'text'
+    return span1
+}
+
+function createButton(id) {
+    var button1 = tag('button')
+    button1.textContent = 'edit'
+    button1.id = id
+    button1.onclick = function (click1) {
+        var key = click1.target.id
+        var x = prompt('input new link')
+        hash[key] = x
+        localStorage.setItem('storage1', JSON.stringify(hash))
+    }
+    return button1
+}
+
+function createImage(domain) {
+    var img1 = tag('img')
+    if (domain) {
+        img1.src = 'https://' + domain + '/favicon.ico'
+    } else {
+        img1.src = 'https://i.loli.net/2019/02/07/5c5b9d224db60.png'
+    }
+    img1.onerror = function (x) {
+        x.target.src = 'https://i.loli.net/2019/02/07/5c5b9d224db60.png'
+    }
+    return img1
+}
+
+
 //取出localstorage 中的 storage1 對應的 hash
-var hashInLocalStorage = JSON.parse(localStorage.getItem('storage1') || 'null')
+var hashInLocalStorage = getFromLocalStorage('storage1')
 if (hashInLocalStorage) {
     hash = hashInLocalStorage
 }
 
 
-//根據hash建立鍵盤
-var index = 0
-while (index < keys.length) {
-    var div1 = document.createElement('div')
+
+//2 根據初始化數據建立鍵盤
+for (var index = 0; index < keys['length']; index = index + 1) {
+    var div1 = tag('div')
     main1.appendChild(div1)
     var row = keys[index]
-    var index2 = 0
-    while (index2 < row.length) {
-        var kbd1 = document.createElement('kbd')
-        var span1 = document.createElement('span')
-        span1.textContent = row[index2]
-        span1.className = 'text'
+    for (var index2 = 0; index2 < row['length']; index2 = index2 + 1) {
+
+        var span = createSpan(row[index2])
+
+        var button = createButton(row[index2])
+
+        var img = createImage(hash[row[index2]])
+
+        var kbd1 = tag('kbd')
         kbd1.className = 'key'
-        kbd1.id = row[index2] + 'p'
-        var button1 = document.createElement('button')
-        button1.textContent = 'edit'
-        button1.id = row[index2]
-        var img1 = document.createElement('img')
-        if (hash[row[index2]]) {
-            img1.src = 'https://' + hash[row[index2]] + '/favicon.ico'
-        }else{
-            img1.src = 'https://i.loli.net/2019/02/07/5c5b9d224db60.png'
-        }
-        img1.onerror = function (xxx) {
-            xxx.target.src = 'https://i.loli.net/2019/02/07/5c5b9d224db60.png'
-        }
-        button1.onclick = function (click1) {
-            var key = click1.target.id
-            var x = prompt('input new link')
-            hash[key] = x
-            localStorage.setItem('storage1', JSON.stringify(hash))
-        }
-        kbd1.appendChild(span1)
-        kbd1.appendChild(img1)
+
+        kbd1.appendChild(span)
+        kbd1.appendChild(img)
+        kbd1.appendChild(button)
+
         div1.appendChild(kbd1)
-        kbd1.appendChild(button1)
-        index2 = index2 + 1
     }
-    index = index + 1
 }
 
 
 
-//specific size of key cap
+
+//優化部分鍵帽樣式
 Esc.parentElement.className = 'key esc second-keycap';
 Tab.parentElement.className = 'key tab second-keycap';
 Delete.parentElement.className = 'key delete second-keycap';
@@ -86,22 +117,22 @@ fn.parentElement.className = 'key fn second-keycap';
 
 
 
-
-// 監聽鍵盤
+//3 監聽鍵盤
 document.onkeypress = function (press1) {
     var key = press1.key
     var website = hash[key]
     document.getElementById('p1').innerHTML = website
 }
 
-document.onkeydown = function (pp) {
-    presedKey = pp.key
+document.onkeydown = function (press) {
+    var presedKey = press.key
     console.log(presedKey)
-    document.getElementsByClassName('key').classList.add('pressed')
+    document.querySelector('.key'+presedKey).removeClass('pressed')
 }
 
-document.onkeyup = function (ee) {
-    presedKey1 = ee.key
-    console.log(presedKey1)
-    document.getElementsByClassName('key').classList.remove('pressed')
+document.onkeyup = function (press) {
+    var presedKey = press.key
+    console.log(presedKey)
+    document.querySelector('.key'+presedKey).addClass('pressed')
 }
+
