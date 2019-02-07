@@ -1,30 +1,30 @@
 
 //1 初始化數據
 
-var keys = {
-    0: ['Esc', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '+', '~'],
-    1: ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', 'Delete'],
-    2: ['Control', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '"', 'Return'],
-    3: ['shl', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '<', '>', '?', 'shr', 'fn'],
-    length: 4
-}
+    var keys = {
+        0: ['Esc', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '+', '~'],
+        1: ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', 'Delete'],
+        2: ['Control', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '"', 'Return'],
+        3: ['shl', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '<', '>', '?', 'shr', 'fn'],
+        length: 4
+    }
 
-var hash = {
-    w: 'wix.com',
-    e: 'evernote.com',
-    y: 'yahoo.com.hk',
-    u: 'unwire.hk',
-    p: 'paypal.com',
-    a: 'apple.com',
-    g: 'www.google.com',
-    h: 'hk01.com',
-    j: 'javascript.ruanyifeng.com',
-    x: 'xiedaimala.com',
-    c: 'chinese.engadget.com',
-    b: 'bbc.com',
-    n: 'dcfever.com',
-    m: 'medium.com',
-}
+    var hash = {
+        w: 'wix.com',
+        e: 'evernote.com',
+        y: 'yahoo.com.hk',
+        u: 'unwire.hk',
+        p: 'paypal.com',
+        a: 'apple.com',
+        g: 'www.google.com',
+        h: 'hk01.com',
+        j: 'javascript.ruanyifeng.com',
+        x: 'xiedaimala.com',
+        c: 'chinese.engadget.com',
+        b: 'bbc.com',
+        n: 'dcfever.com',
+        m: 'medium.com',
+    }
 
 
 
@@ -93,6 +93,7 @@ for (var index = 0; index < keys['length']; index = index + 1) {
 
         var kbd1 = tag('kbd')
         kbd1.className = 'key'
+        kbd1.id = row[index2] + '-key'
 
         kbd1.appendChild(span)
         kbd1.appendChild(img)
@@ -115,24 +116,26 @@ shl.parentElement.className = 'key shl second-keycap';
 shr.parentElement.className = 'key shr second-keycap';
 fn.parentElement.className = 'key fn second-keycap';
 
-
+var presedKey = '';
 
 //3 監聽鍵盤
-document.onkeypress = function (press1) {
-    var key = press1.key
+document.onkeypress = function (press) {
+    var key = press.key
     var website = hash[key]
     document.getElementById('p1').innerHTML = website
 }
 
 document.onkeydown = function (press) {
-    var presedKey = press.key
-    console.log(presedKey)
-    document.querySelector('.key'+presedKey).removeClass('pressed')
+    presedKey = press.key;
+    console.log(presedKey);
+    document.getElementById(presedKey + '-key').classList.add('pressed');
 }
 
 document.onkeyup = function (press) {
-    var presedKey = press.key
-    console.log(presedKey)
-    document.querySelector('.key'+presedKey).addClass('pressed')
+    // var presedKey = press.key;
+    console.log("up: "+presedKey)
+    document.getElementById(presedKey + '-key').classList.remove('pressed');
 }
+
+
 
