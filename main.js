@@ -11,13 +11,29 @@ var hash = {
     q: 'qq.com',
     w: 'wix.com',
     e: 'evernote.com',
-    r: 'https://raymondguo78.github.io',
-    t: 'https://blog.techbridge.cc',
+    r: 'mondgu',
+    t: 'techbridd',
     y: 'yahoo.com.hk',
     u: 'uniqlo.com',
     i: 'ikea.com',
     o: 'office.com',
-    p: 'paypal.com'
+    p: 'paypal.com',
+    a: 's',
+    s: 'sd',
+    d: 'dc',
+    f: 'dvd',
+    g: 'www.google.com/',
+    h: 'hk01.com',
+    j: 'paal.com',
+    k: 'payal.com',
+    l: 'ppal.com',
+    z: 'pl.com',
+    x: 'pypal.com',
+    c: 'abc.com',
+    v: 'bbc.com',
+    b: 'cnn.com',
+    n: 'dcfever.com',
+    m: 'medium.com',
 }
 
 //取出localstorage 中的 storage1 對應的 hash
@@ -30,21 +46,21 @@ if (hashInLocalStorage) {
 //根據hash建立鍵盤
 var index = 0
 while (index < keys.length) {
-    div1 = document.createElement('div')
+    var div1 = document.createElement('div')
     main1.appendChild(div1)
-    row = keys[index]
-    index2 = 0
+    var row = keys[index]
+    var index2 = 0
     while (index2 < row.length) {
-        kbd1 = document.createElement('kbd')
-        span1 = document.createElement('span')
+        var kbd1 = document.createElement('kbd')
+        var span1 = document.createElement('span')
         span1.textContent = row[index2]
         span1.className = 'text'
         kbd1.className = 'key'
         kbd1.id = row[index2] + 'p'
-        button1 = document.createElement('button')
+        var button1 = document.createElement('button')
         button1.textContent = 'edit'
         button1.id = row[index2]
-        img1 = document.createElement('img')
+        var img1 = document.createElement('img')
         if (hash[row[index2]]) {
             img1.src = 'https://' + hash[row[index2]] + '/favicon.ico'
         }else{
@@ -54,8 +70,8 @@ while (index < keys.length) {
             xxx.target.src = 'https://i.loli.net/2019/02/07/5c5b9d224db60.png'
         }
         button1.onclick = function (click1) {
-            key = click1.target.id
-            x = prompt('input new link')
+            var key = click1.target.id
+            var x = prompt('input new link')
             hash[key] = x
             localStorage.setItem('storage1', JSON.stringify(hash))
         }
@@ -85,19 +101,8 @@ fn.parentElement.className = 'key fn second-keycap';
 
 // 監聽鍵盤
 document.onkeypress = function (press1) {
-    key = press1.key
-    website = hash[key]
+    var key = press1.key
+    var website = hash[key]
     document.getElementById('p1').innerHTML = website
 }
 
-document.onkeydown = function (pp) {
-    presedKey = pp.key
-    console.log(presedKey)
-    document.getElementsByClassName('key').classList.add('pressed')
-}
-
-document.onkeyup = function (ee) {
-    presedKey1 = ee.key
-    console.log(presedKey1)
-    document.getElementsByClassName('key').classList.remove('pressed')
-}
